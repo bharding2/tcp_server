@@ -6,7 +6,6 @@ const slothbear_server = module.exports = exports = net.createServer((socket) =>
     fs.writeFile(__dirname + '/' + Date.now() + '.txt', chunk, () => {
       socket.end();
       console.log('fin sent');
-      slothbear_server.close();
     });
   });
 });
