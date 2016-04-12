@@ -2,10 +2,13 @@ const net = require('net');
 const fs = require('fs');
 
 const slothbearServer = module.exports = exports = net.createServer((socket) => {
-  var fileToWrite = fs.createWriteStream(__dirname + '/' + Date.now() + '.txt');
+  var currentTime = Date.now();
+  var fileToWrite = fs.createWriteStream(__dirname + '/' + currentTime + '.txt');
   socket.pipe(fileToWrite);
-  socket.end();
-  console.log('fin sent');
+  socket.on('data', () => {
+    socket.end('' + currentTime);
+    console.log('fin sent');
+  });
 });
 
 slothbearServer.listen(3000, () => {
