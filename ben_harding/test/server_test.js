@@ -15,10 +15,6 @@ describe('tcp server', () => {
     oldNumFiles = oldList.length;
   });
 
-  after(() => {
-    // slothbearServer.close();
-  });
-
   it('should connect and write the request to a file', (done) => {
     chai.request('http://localhost:3000')
       .get('/')
