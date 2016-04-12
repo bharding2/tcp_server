@@ -12,9 +12,10 @@ describe('tcp server', () => {
   before(() => {
     var oldList = fs.readdirSync(__dirname + '/../');
     oldNumFiles = oldList.length;
-    slothbear_server.listen(3000, (socket) => {
-      process.stdout.write('server up on 3000\n');
-    });
+  });
+
+  after(() => {
+    slothbear_server.close();
   });
 
   it('should connect and write the request to a file', (done) => {
