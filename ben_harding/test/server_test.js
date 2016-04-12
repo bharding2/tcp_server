@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const fs = require('fs');
-const slothbear_server = require(__dirname + '/../server');
+const slothbearServer = require(__dirname + '/../server');
 
 chai.use(chaiHttp);
 
@@ -15,7 +15,7 @@ describe('tcp server', () => {
   });
 
   after(() => {
-    slothbear_server.close();
+    slothbearServer.close();
   });
 
   it('should connect and write the request to a file', (done) => {
